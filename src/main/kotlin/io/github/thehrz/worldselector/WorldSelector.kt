@@ -21,9 +21,7 @@ object WorldSelector : Plugin() {
             }
         }
 
-        settings["WorldNames"] = worldNamesMap
-
-        settings.saveToFile()
+        settings.also { it["WorldNames"] = worldNamesMap }.saveToFile()
     }
 }
 
