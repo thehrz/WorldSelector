@@ -7,9 +7,9 @@ plugins {
 taboolib {
     install("common")
     install("platform-bukkit")
-    install("common-5")
     install("module-nms")
     install("module-configuration")
+    install("module-metrics")
     classifier = null
     version = "6.0.9-25"
 }
