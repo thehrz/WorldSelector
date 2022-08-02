@@ -1,19 +1,9 @@
-# Building
+<div style="align-content: center">
+   <img width="128"  src="WorldSelector.png" alt="WorldSelector">
+    <br>
+   <h1 style="size: 200px">WorldSelector</h1>
+</div>
 
-* [Gradle](https://gradle.org/) - Dependency Management
+----
 
-The GradleWrapper in included in this project.
-
-**Windows:**
-
-```
-gradlew.bat clean build
-```
-
-**macOS/Linux:**
-
-```
-./gradlew clean build
-```
-
-Build artifacts should be found in `./build/libs` folder.
+WorldSelector is a bukkit plugin that allows your server to automatically select worlds and send data to the player's map mods.
