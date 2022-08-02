@@ -16,29 +16,49 @@ import taboolib.platform.BukkitPlugin
 object WorldSelectorListener {
     @Awake(LifeCycle.ENABLE)
     fun register() {
-        Bukkit.getMessenger().registerIncomingPluginChannel(BukkitPlugin.getInstance(), if (MinecraftVersion.major >= 5) "worldinfo:world_id" else "world_id", VoxelMap)
+        Bukkit.getMessenger().registerIncomingPluginChannel(
+            BukkitPlugin.getInstance(),
+            if (MinecraftVersion.major >= 5) "worldinfo:world_id" else "world_id",
+            VoxelMap
+        )
+        if (MinecraftVersion.major < 5) {
+            Bukkit.getMessenger().registerIncomingPluginChannel(BukkitPlugin.getInstance(), "world_info", JourneyMap)
+        }
     }
 
     @SubscribeEvent
     fun onPlayerChangedWorld(e: PlayerChangedWorldEvent) {
-        submit(async = true) {
+        submit(async = true, delay = 20L) {
             NMS().sendXaeroWorldMapData(e.player, e.player.world)
         }
     }
 
     @SubscribeEvent
     fun onPlayerJoin(e: PlayerJoinEvent) {
-        submit(async = true) {
+        submit(async = true, delay = 20L) {
             NMS().sendXaeroWorldMapData(e.player, e.player.world)
         }
     }
 
     object VoxelMap : PluginMessageListener {
         override fun onPluginMessageReceived(channel: String, player: Player, data: ByteArray) {
-            NMS().sendVoxelMapData(
-                player,
-                player.world
-            )
+            submit(async = true, delay = 20L) {
+                NMS().sendVoxelMapData(
+                    player,
+                    player.world
+                )
+            }
+        }
+    }
+
+    object JourneyMap : PluginMessageListener {
+        override fun onPluginMessageReceived(channel: String, player: Player, data: ByteArray) {
+            submit(async = true, delay = 20L) {
+                NMS().sendJourneyMapData(
+                    player,
+                    player.world
+                )
+            }
         }
     }
 }
