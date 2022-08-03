@@ -12,7 +12,12 @@ taboolib {
     install("module-configuration")
     install("module-metrics")
     classifier = null
-    version = "6.0.9-25"
+    version = "6.0.9-46"
+    description {
+        contributors {
+            name("Thehrz")
+        }
+    }
 }
 
 repositories {
