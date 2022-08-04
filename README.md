@@ -10,3 +10,6 @@ WorldSelector允许您的服务器自动选择世界并将数据发送到玩家�
 
 ## 效果展示
 ![](https://s2.loli.net/2022/08/02/6vSOhzMW8EQRoTB.gif)
+
+## 下载
+我们建议您在 [Releases](https://github.com/Thehrz/WorldSelector/releases)下载
